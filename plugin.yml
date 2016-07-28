@@ -1,0 +1,4 @@
+name: MiningMoney
+main: Main
+api: [1.13.1, 2.0.0]
+version: 1.0
