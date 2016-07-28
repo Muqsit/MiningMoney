@@ -6,6 +6,8 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\utils\Config;
 use onebone\economyapi\EconomyAPI;
+use pocketmine\level\particle\HappyVillagerParticle;
+use pocketmine\math\Vector3;
 
 class Main extends PluginBase implements Listener{
 
@@ -22,13 +24,11 @@ class Main extends PluginBase implements Listener{
     $block = $e->getBlock();
     $message = $cfg->get("reward-message");
     $price = $cfg->get($block->getId());
-    
+    $x = $block->getX(); $y = $block->getY(); $z = $block->getZ(); $level = $block->getLevel();
     if($price !== null && $price > 0){
       EconomyAPI::getInstance()->addMoney($p, $price);
+      $level->addParticle(new HappyVillagerParticle($x, $y, $z));
       $p->sendMessage($message, str_replace("{reward}", $price));
-    }else{
-      return false;
     }
-    
   }
 }
