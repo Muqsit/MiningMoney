@@ -21,12 +21,14 @@ class Main extends PluginBase implements Listener{
     $cfg = $this->getConfig();
     $block = $e->getBlock();
     $message = $cfg->get("reward-message");
-
-    if($cfg->get($block->getId()) !== null && $cfg->get($block->getId()) > 0){
-      EconomyAPI::getInstance()->addMoney($p, $cfg->get($block->getId()));
-      $p->sendMessage($message);
+    $price = $cfg->get($block->getId());
+    
+    if($price !== null && $price > 0){
+      EconomyAPI::getInstance()->addMoney($p, $price);
+      $p->sendMessage($message, str_replace("{reward}", $price));
     }else{
       return false;
     }
+    
   }
 }
