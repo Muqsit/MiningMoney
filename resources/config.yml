@@ -1,6 +1,6 @@
 ---
-#This message will be sent to the player when the player mines a special block.
-reward-message: "§a§l(!) §r§aCongrats! You have earned a reward for mining this block!"
+#This message will be sent to the player when the player mines a special block. {reward} will be replaced by the reward price.
+reward-message: "§a§l(!) §r§aCongrats! You have earned §e{reward} §afor mining this block!"
 
 #These are the blocks the player will be rewarded for, when mined. Format:
 #itemid: price
