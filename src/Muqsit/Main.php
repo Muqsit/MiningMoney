@@ -19,7 +19,7 @@ class Main extends PluginBase implements Listener{
   
   public function mine(BlockBreakEvent $e){
     $p = $e->getPlayer();
-    if($p->hasPermission("miningmoney.allow"){
+    if($p->hasPermission("miningmoney.allow")){
       $cfg = $this->getConfig();
       $block = $e->getBlock();
       $message = $cfg->get("reward-message");
